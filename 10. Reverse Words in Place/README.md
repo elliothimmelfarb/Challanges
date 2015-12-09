@@ -1,0 +1,1 @@
+Reverses words in place in a string while maintaining their locations and indexes of basic punctuation.

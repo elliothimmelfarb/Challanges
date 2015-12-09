@@ -1,0 +1,1 @@
+Returns an array which states if each word in an input string is a palindrome or not. It filters out punctuation and extra spaces as well.
