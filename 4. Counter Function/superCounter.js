@@ -56,4 +56,4 @@ function superCounter(str) {
   }; 
 }
 
-console.log(superCounter("Count   me in..."));
+console.log(superCounter("Count    me in..."));
