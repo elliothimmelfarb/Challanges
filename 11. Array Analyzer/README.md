@@ -1,0 +1,1 @@
+Returns an object which gives information about an array of numbers
