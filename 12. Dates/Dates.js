@@ -4,13 +4,11 @@ function age(year, month, day) {
     
     var years = Math.abs(d.getFullYear() - year);
     
-    // var months = 
+    var months = Math.abs(d.getMonth() - month);
     
-    // var days = 
+    var days = Math.abs(d.getDate() - day);
     
-    // if days more than thirty
-        // add one to month
-        // add remainder to days
+    var totalDays = (years * 365) + (months * 30) + days;
     
     return "date";
 }
