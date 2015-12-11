@@ -1,16 +1,16 @@
 function age(year, month, day) {
     
-    var d = new Date();
+    // since the date object can find the number of miliseconds between to date objects,
+    // I will use the number of miliseconds in a day to calculate the number of days
+    var day = 1000 * 60 * 60 * 24;
     
-    var years = Math.abs(d.getFullYear() - year);
+    // create new Date object from input perameters
+    var peramDate = new Date(year, month, day);
+    console.log(peramDate);
+    //create new Date object from current day;
+    var today = new Date();
+    console.log(today);
     
-    var months = Math.abs(d.getMonth() - month);
-    
-    var days = Math.abs(d.getDate() - day);
-    
-    var totalDays = (years * 365) + (months * 30) + days;
-    
-    return "date";
 }
 
 console.log(age(2017, 11, 17));
