@@ -8,48 +8,58 @@ function wordSelector(str) {
     // split and remove non-words
     var wordArray = str.match(/[a-z]+/ig);
 
-    // repeat counter to pass all words through
+    // fucntion counts number of most repeated letter in a word
     function repeatCounter(word) {
         
+        // to avoid retesting chars
         var testedChars = "";
         
-        var threshold = 2;
+        // highest number of repeats
+        var thresholdInner = 2;
         
+        // for each char in word
         for (var i = 0; i < word.length; i++) {
+            
+            // if it hasn't been tested before
             if (testedChars.indexOf(word.charAt(i)) === -1) {
-                var reg = RegExp(word[i], "gi");
-                var r = word.match(reg);
-                if (r.length > threshold) {
-                    threshold = r.length;
+                var reg = RegExp(word[i], "gi"); // create regex expression out of char
+                var r = word.match(reg); // collect all instances of that char
+                
+                // if its length is greater than the threshold
+                if (r.length > thresholdInner) {
+                    thresholdInner = r.length; // move threshold up
                 }
+                
+                // flag current char to not test again
                 testedChars += word.charAt(i);
             }
         }
         
-        return threshold;
+        // return the highest number of repeats of a single char
+        return thresholdInner;
     }
 
-    // Array to hold words with highest repeats 
+    // Array to hold words with the highest number of repeated letters 
     var highestRepeats = [];
 
-    // keep track of current threshold for number of repeats necessary to be held in highestRepeats
-    var threshold = 1;
+    // threshold of repeates to be held in highestRepeats
+    var thresholdOuter = 1;
 
-    // iterate through wordArray
+    // for each word in wordArray
     for (var i = 0; i < wordArray.length; i++) {
 
         // store number of repeats through repeatCounter function
         var repeats = repeatCounter(wordArray[i]);
 
         // if number of repeats beats the threshold
-        if (repeats > threshold) {
+        if (repeats > thresholdOuter) {
             highestRepeats = []; // clear return array
             highestRepeats.push(wordArray[i]); // push current word
-            threshold = repeats; // update threshold
+            thresholdOuter = repeats; // update threshold
         }
 
         // if repeats matches threshold
-        else if (repeats === threshold) {
+        else if (repeats === thresholdOuter) {
             highestRepeats.push(wordArray[i]); // push current word
         }
     }
