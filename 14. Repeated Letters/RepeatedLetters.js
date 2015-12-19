@@ -58,12 +58,13 @@ function wordSelector(str) {
             thresholdOuter = repeats; // update threshold
         }
 
-        // if repeats matches threshold
+        // if number of repeats matches current threshold
         else if (repeats === thresholdOuter) {
             highestRepeats.push(wordArray[i]); // push current word
         }
     }
 
+    // return array of word(s) with the highest number of repeated letters
     return highestRepeats;
 }
 
