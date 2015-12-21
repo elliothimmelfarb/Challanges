@@ -2,27 +2,32 @@ function age(year, month, day) {
     
     var d = new Date();
     
-    var today = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    var today = new Date(2015, 3, 2); //new Date(d.getFullYear(), d.getMonth(), d.getDate());
     
-    var targetDate = new Date (year, month, day);
+    var targetDate = new Date(year, month, day);
     
-    var diffInMil = Math.abs(today - targetDate);
+    var diffInMil = Math.abs(today.getTime() - targetDate.getTime());
     
     var daysDiff = diffInMil / (1000*60*60*24);
     
     var years, months, days;
     
-    daysDiff = 789;
+    var remaining = daysDiff % 365;
     
-    years = Math.floor(daysDiff/365);
+    daysDiff -= remaining;
     
-    months = Math.floor((daysDiff - (years * 365)) / 30);
+    years = daysDiff / 365;
     
-    days = Math.floor((daysDiff - (years * 365 + months * 30)));
+    days = remaining % 30;
     
-    console.log(years, " ", months, " ", days);
+    remaining -= days;
+    
+    months = remaining / 30;
+    
+    return years + " " + months + " " + days;
 }
 
-console.log(age(2015, 11, 20));
+console.log(age(2017, 11, 17));
+console.log(age(2015, 3, 6));
 
-// today.getFullYear(), today.getMonth(), today.getDate()
+
